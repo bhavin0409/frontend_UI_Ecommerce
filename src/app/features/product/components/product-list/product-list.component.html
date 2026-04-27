@@ -1,0 +1,129 @@
+<div class="container-fluid px-5 py-5" id="product-list">
+
+  <div class="row mb-3">
+    <div class="col-md-6 mb-3">
+      <input [(ngModel)]="search" class="form-control" placeholder="Search products..." />
+    </div>
+
+    <div class="col-md-2">
+      <button class="btn btn-success w-100" (click)="onSearch()">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border text-success"></div>
+  </div>
+
+  <div class="row g-5" *ngIf="!loading">
+
+    <div class="col-md-3" *ngFor="let product of products">
+      <div class="card h-100 shadow-sm bg-dark">
+        <img [src]="'https://localhost:7225' + product.imageUrl" [alt]="product.name" height="400" width="200"
+          class="card-img-top pt-2 bg-light" />
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title text-light">{{product.name}}</h5>
+
+          <p class="text-light small">{{ product.description | slice:0:150 }}...</p>
+          <span class="badge bg-primary mb-2  ">{{product.categoryName}}</span>
+          <h5 class="text-success fw-bold ">₹ {{product.price}}</h5>
+          <div class="d-flex justify-content-between">
+            <div>
+              <button class="btn btn-success mt-2" (click)="viewProduct(product.id)">View In Details</button>
+            </div>
+
+            <div>
+              <button class="btn btn-primary mt-2" (click)="addToCart(product.id)" [disabled]="loading">
+                Add to Cart
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- <div class="d-flex justify-content-center mt-4 gap-2">
+    <button class="btn btn-outline-light" (click)="prevPage()">Prev</button>
+    <span class="align-self-center text-light">Page {{ page }}</span>
+    <button class="btn btn-outline-light" (click)="nextPage()">Next</button>
+  </div> -->
+</div>
+
+
+<div class="modal fade" id="productDetailsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title fw-bold">🛍️ Product Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal">
+        </button>
+      </div>
+<div class="modal-body bg-dark text-light p-4" *ngIf="selectedProduct() as selectedProduct">
+
+        <div class="row">
+
+          <!-- LEFT -->
+          <div class="col-md-5 text-center border-end">
+
+            <img [src]="'https://localhost:7225' + selectedProduct.imageUrl"
+                 class="img-fluid rounded-4 shadow-sm product-preview">
+
+            <h4 class="fw-bold mt-3">
+              {{ selectedProduct.name }}
+            </h4>
+
+            <span class="badge bg-primary px-3 py-2 mt-2">
+              {{ selectedProduct.categoryName }}
+            </span>
+
+            <h3 class="text-success fw-bold mt-3">
+              ₹ {{selectedProduct.price}}
+            </h3>
+
+          </div>
+
+          <!-- RIGHT -->
+          <div class="col-md-7">
+
+            <h5 class="fw-bold mb-3">📄 Description</h5>
+
+            <div class="desc-box">
+              <p [innerHTML]="formattedDescription"></p>
+            </div>
+
+            <div class="mt-4">
+              <span class="badge px-4 py-2 fs-6"
+                [ngClass]="selectedProduct.stock > 0 ? 'bg-success' : 'bg-danger'">
+                {{ selectedProduct.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="modal-footer bg-dark text-light justify-content-between">
+        <div>
+          <button class="btn btn-primary mt-2" (click)="addToCart(selectedProduct().id)" [disabled]="loading" data-bs-dismiss="modal">
+            Add to Cart
+          </button>
+        </div>
+
+        <div>
+          <button class="btn btn-light me-2" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

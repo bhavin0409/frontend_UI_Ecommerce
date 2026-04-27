@@ -1,0 +1,175 @@
+/* DASHBOARD CARDS */
+.dashboard-card {
+  padding: 25px;
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* ICON STYLE */
+.icon {
+  font-size: 35px;
+  opacity: 0.8;
+}
+
+/* GRADIENT COLORS */
+.users-card {
+  background: linear-gradient(135deg, #4e73df, #224abe);
+}
+
+.orders-card {
+  background: linear-gradient(135deg, #1cc88a, #13855c);
+}
+
+.revenue-card {
+  background: linear-gradient(135deg, #f6c23e, #dda20a);
+}
+
+/* RECENT ORDERS */
+.list-group-item {
+  transition: 0.2s;
+  border: none;
+  padding: 15px 20px;
+}
+
+.list-group-item:hover {
+  background: #f8f9fa;
+}
+
+/* STATUS BADGE */
+.status-badge {
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+/* CHART CARD */
+.chart-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  height: 100%;
+}
+
+/* CANVAS */
+canvas {
+  width: 100% !important;
+  height: 500px !important;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+.dashboard-card {
+  padding: 25px;
+  border-radius: 18px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+.dashboard-card::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: rgba(255,255,255,0.08);
+  top: -50%;
+  left: -50%;
+  transform: rotate(25deg);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* GRADIENTS */
+.users-card {
+  background: linear-gradient(135deg, #4e73df, #224abe);
+}
+
+.orders-card {
+  background: linear-gradient(135deg, #1cc88a, #13855c);
+}
+
+.revenue-card {
+  background: linear-gradient(135deg, #f6c23e, #dda20a);
+}
+
+/* ICON STYLE */
+.icon {
+  font-size: 40px;
+  opacity: 0.9;
+}
+
+/* ===== CARD GLOBAL ===== */
+.card {
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== RECENT ORDERS ===== */
+.list-group-item {
+  border: none;
+  padding: 15px 20px;
+  transition: 0.2s;
+}
+
+.list-group-item:hover {
+  background: #f8f9fa;
+  transform: scale(1.01);
+}
+
+/* STATUS BADGE */
+.status-badge {
+  font-size: 12px;
+  border-radius: 20px;
+}
+
+/* ===== CHART CARD ===== */
+.chart-card {
+  background: white;
+  padding: 20px;
+  height: 100%;
+  border-radius: 20px;
+  position: relative;
+}
+
+
+
+/* ===== HEADER ===== */
+h2 {
+  font-size: 28px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== BADGES ===== */
+.badge {
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dashboard-card,
+.card {
+  animation: fadeUp 0.5s ease;
+}

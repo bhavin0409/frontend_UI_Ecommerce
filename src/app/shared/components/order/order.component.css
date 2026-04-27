@@ -1,0 +1,56 @@
+
+/* ICON */
+.icon {
+    font-size: 40px;
+    opacity: 0.8;
+}
+
+/* TEXT */
+h6 {
+    opacity: 0.9;
+    font-size: 14px;
+}
+
+h2 {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.order-card {
+    transition: 0.3s;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+}
+
+.box {
+    height: 195px;
+    overflow: auto;
+}
+
+.box::-webkit-scrollbar {
+    width: 6px;
+}
+.box::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.item-box {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+input,
+select {
+    border-radius: 10px;
+}

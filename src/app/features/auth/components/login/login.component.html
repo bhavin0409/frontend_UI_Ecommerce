@@ -1,0 +1,51 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100 dark-bg">
+
+  <div class="card login-card p-4 bg-dark">
+
+    <div class="text-center mb-1">
+      <img src="assets/images/logo.png" width="100" alt="logo">
+    </div>
+
+    <div class="text-center">
+      <h3 class="fw-bold text-white">Welcome Back!</h3>
+      <p class="text-light">Sign in to your account to continue shopping</p>
+    </div>
+    <hr>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label class="form-label text-light">Email address</label>
+        <input type="email"
+        class="form-control custom-input"
+        formControlName="email"
+        placeholder="Enter your email">
+      </div>
+      
+      <div class="mb-2">
+        <label class="form-label text-light">Password</label>
+        <input type="password"
+        class="form-control custom-input"
+        formControlName="password"
+        placeholder="Enter your password">
+      </div>
+      
+      <p class="text-danger mt-2" *ngIf="errorMsg">{{ errorMsg }}</p>
+      <button class="btn login-btn w-100 my-3">
+        Login
+      </button>
+      <div class="google-wrapper my-3">
+        <div id="google-btn"></div>
+      </div>
+
+      <div class="divider">OR</div>
+
+      <p class="text-center mb-0 text-light">
+        Don't have an account?
+        <a routerLink="/auth/register" class="register-link">Register</a>
+      </p>
+
+    </form>
+
+  </div>
+
+</div>

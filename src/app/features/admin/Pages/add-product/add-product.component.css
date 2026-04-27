@@ -1,0 +1,45 @@
+
+
+/* Card */
+.add-card {
+  transition: 0.3s;
+}
+.add-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Inputs */
+.custom-input {
+  border-radius: 12px;
+  padding: 10px;
+  transition: all 0.25s ease;
+}
+
+.custom-input:focus {
+  border-color: #1cc88a;
+  box-shadow: 0 0 8px rgba(28, 200, 138, 0.3);
+}
+
+/* Input group */
+.input-group-text {
+  border-radius: 12px 0 0 12px;
+}
+
+/* Buttons */
+.btn-success {
+  background: linear-gradient(45deg, #1cc88a, #13855c);
+  border: none;
+}
+.btn-success:hover {
+  transform: translateY(-2px);
+}
+
+/* Valid */
+.is-valid {
+  border-color: #1cc88a !important;
+}
+
+/* Invalid */
+.is-invalid {
+  border-color: #dc3545 !important;
+}

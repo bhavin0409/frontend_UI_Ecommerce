@@ -1,0 +1,11 @@
+#box{
+    height: 100%;
+    overflow: auto;
+}
+#box::-webkit-scrollbar {
+  width: 6px;
+}
+#box::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}

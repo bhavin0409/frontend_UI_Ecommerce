@@ -1,0 +1,76 @@
+#profile-box{
+    background: #0f2027;
+    color: white;
+    height: 87.3%;
+}
+
+.box{
+    height: 70%;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.box::-webkit-scrollbar {
+    width: 6px;
+}
+.box::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+/* Modal Background */
+.dark-modal {
+  background: #1e1e2f;
+  color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  border: none;
+}
+
+/* Input Fields */
+.dark-input {
+  background: #2a2a3d;
+  border: 1px solid #3a3a55;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.dark-input:focus {
+  background: #2a2a3d;
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+  color: #fff;
+}
+
+/* Placeholder */
+.dark-input::placeholder {
+  color: #aaa;
+}
+
+/* Gradient Button */
+.btn-gradient {
+  background: linear-gradient(135deg, #6c63ff, #8e7dff);
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #5a52e0, #7b6cf5);
+  transform: translateY(-1px);
+}
+
+/* Cancel Button */
+.btn-outline-light {
+  border-radius: 10px;
+}
+
+/* Header spacing */
+.modal-header h5 {
+  letter-spacing: 0.5px;
+}

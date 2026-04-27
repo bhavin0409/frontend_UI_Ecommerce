@@ -1,0 +1,13 @@
+#cart-box{
+    background: #0f2027;
+    color: white;
+}
+.img-fluid{
+    height: 150px;
+    width: 150px;
+}
+#emptyCart{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}

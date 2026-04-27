@@ -5,13 +5,13 @@
 /tmp
 /out-tsc
 /bazel-out
-
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
 
 # IDEs and editors
+.vs
 .idea/
 .project
 .classpath
@@ -40,3 +40,16 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+src/environments
+.vs/frontend_UI_Ecommerce/CopilotIndices/17.13.430.18484/CodeChunks.db
+.vs/frontend_UI_Ecommerce/CopilotIndices/17.13.430.18484/CodeChunks.db-shm
+.vs/frontend_UI_Ecommerce/CopilotIndices/17.13.430.18484/CodeChunks.db-wal
+.vs/frontend_UI_Ecommerce/CopilotIndices/17.13.430.18484/SemanticSymbols.db
+.vs/frontend_UI_Ecommerce/CopilotIndices/17.13.430.18484/SemanticSymbols.db-shm
+.vs/frontend_UI_Ecommerce/CopilotIndices/17.13.430.18484/SemanticSymbols.db-wal
+.vs/frontend_UI_Ecommerce/FileContentIndex/2c8c4b9d-d288-4f1c-a412-f502b3643470.vsidx
+.vs/frontend_UI_Ecommerce/FileContentIndex/3b161697-3f9c-4c87-a9ff-c9dfce75a56f.vsidx
+.vs/frontend_UI_Ecommerce/FileContentIndex/9191f0df-779d-4f1e-9a44-bcbd9602989f.vsidx
+.vs/frontend_UI_Ecommerce/FileContentIndex/07605985-2461-4a1f-bf87-a3bad604dd82.vsidx
+.vs/frontend_UI_Ecommerce/FileContentIndex/bb6d61e6-4616-4d57-8e77-36fa67f7da29.vsidx

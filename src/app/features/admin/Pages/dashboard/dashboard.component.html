@@ -1,0 +1,104 @@
+<div class="container-fluid mt-4 px-4">
+
+  <h2 class="fw-bold mb-4">
+  Dashboard Overview 🚀
+</h2>
+  <!-- STATS CARDS -->
+  <div class="row g-4">
+
+    <div class="col-lg-4 col-md-6">
+      <div class="dashboard-card users-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-light">Total Users</h6>
+            <h2 class="fw-bold">{{ stats?.totalUsers || 0 }}</h2>
+          </div>
+          <i class="bi bi-people-fill icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="dashboard-card orders-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-light">Total Orders</h6>
+            <h2 class="fw-bold">{{ stats?.totalOrders || 0 }}</h2>
+          </div>
+          <i class="bi bi-bag-check-fill icon"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6">
+      <div class="dashboard-card revenue-card">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-light">Total Revenue</h6>
+            <h2 class="fw-bold">₹{{ stats?.totalRevenue || 0 }}</h2>
+          </div>
+          <i class="bi bi-currency-rupee icon"></i>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row mt-5 g-4">
+
+    <div class="col-lg-6">
+      <div class="card shadow border-0 rounded-4 h-100">
+
+        <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center m-3">
+          <h5 class="fw-bold mb-0">Recent Orders</h5>
+          <span class="badge bg-primary px-3 py-2">Last 5</span>
+        </div>
+
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+
+            <li *ngFor="let order of recentOrders"
+              class="list-group-item d-flex justify-content-between align-items-center">
+
+              <div class="d-flex flex-column">
+                <span class="fw-semibold">Order #{{order.id}}</span>
+                <small class="text-muted">👤 {{order.userName}}</small>
+                <small class="text-secondary">
+                  📅 {{ order.createdAt | date:'medium' }}
+                </small>
+              </div>
+              <span class="badge px-3 py-2 status-badge" [ngClass]="{
+                  'bg-warning text-dark': order.status === 'Pending',
+                  'bg-info text-dark': order.status === 'Shipped',
+                  'bg-success': order.status === 'Delivered',
+                  'bg-danger': order.status === 'Cancelled'
+                }">
+                {{order.status}}
+              </span>
+
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <div class="col-lg-6">
+      <div class="chart-card shadow border-0 rounded-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="fw-bold mb-0"> 📊 Sales Analytics
+          </h5>
+          <span class="badge bg-success">7 Days</span>
+        </div>
+
+        <canvas id="salesChart"></canvas>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

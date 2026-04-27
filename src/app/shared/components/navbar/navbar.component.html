@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid px-5">
+
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/" *ngIf="!isAdmin()">
+      <img src="assets/images/logo.png" alt="E-Shop Logo" width="100">
+    </a>
+    <a class="navbar-brand d-flex align-items-center gap-2" routerLink="/admin" *ngIf="isAdmin()">
+      <img src="assets/images/logo.png" alt="E-Shop Logo" width="100">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#eshopNavbar"
+      aria-controls="eshopNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="eshopNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center align-items-center">
+
+        <li class="nav-item" *ngIf="!isAdmin()">
+          <a class="nav-link text-light" routerLink="/" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            Home
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="!isAdmin()">
+          <a class="nav-link text-light" routerLink="/products" routerLinkActive="active">
+            Products
+          </a>
+        </li>
+
+        <li class="nav-item ms-lg-2 mx-lg-3 my-3 my-lg-0 d-flex gap-2 flex-wrap">
+
+          <ng-container *ngIf="!isLoggedIn()">
+            <a class="btn btn-info" routerLink="/auth/login">Login</a>
+            <a class="btn btn-success" routerLink="/auth/register">Register</a>
+          </ng-container>
+
+          <ng-container *ngIf="isLoggedIn()">
+            <a *ngIf="isAdmin()" class="nav-link text-light"
+               routerLink="/admin" routerLinkActive="active">
+              Admin
+            </a>
+            
+            <li class="nav-item ms-lg-3" *ngIf="!isAdmin()">
+              <a class="btn btn-outline-light" routerLink="/cart">
+                🛒 Cart
+              </a>
+            </li>
+          
+            <a class="btn btn-info"  routerLink="/profile">Profile</a>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

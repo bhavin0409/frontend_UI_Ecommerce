@@ -1,0 +1,56 @@
+/* Gradient Title */
+
+
+/* Card */
+.edit-card {
+  transition: 0.3s;
+}
+
+/* Inputs */
+.custom-input {
+  border-radius: 12px;
+
+  transition: all 0.25s ease;
+}
+
+.custom-input:focus {
+  border-color: #4e73df;
+  box-shadow: 0 0 8px rgba(78, 115, 223, 0.3);
+}
+
+/* Input Group */
+.input-group-text {
+  border-radius: 12px 0 0 12px;
+}
+
+/* Preview Box */
+.preview-box {
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Image */
+.preview-img {
+  max-height: 150px;
+  object-fit: contain;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+.preview-img:hover {
+  transform: scale(1.05);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(45deg, #4e73df, #224abe);
+  border: none;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+/* Invalid */
+.is-invalid {
+  border-color: #dc3545 !important;
+}

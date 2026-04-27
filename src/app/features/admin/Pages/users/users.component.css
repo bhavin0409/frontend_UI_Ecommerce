@@ -1,0 +1,58 @@
+/* Gradient Title */
+.gradient-text {
+  background: linear-gradient( #0b38c1, #03432b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.search-box {
+  width: 380px;
+}
+.search-box input {
+  border-radius: 25px;
+  padding-left: 15px;
+}
+
+.table-row {
+  transition: all 0.25s ease;
+}
+.table-row:hover {
+  transform: scale(1.01);
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4e73df, #020817);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.role-badge {
+  font-size: 13px;
+  border-radius: 20px;
+}
+
+.admin-role {
+  background: #ff4d4f;
+  color: white;
+}
+
+.user-role {
+  background: #1890ff;
+  color: white;
+}
+
+.table th {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.card {
+  transition: 0.3s;
+}

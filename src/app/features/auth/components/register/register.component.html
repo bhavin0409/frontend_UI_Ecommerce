@@ -1,0 +1,69 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100 ">
+
+  <div class="card login-card p-4 bg-dark">
+
+    <!-- Logo -->
+    <div class="text-center mb-2">
+      <img src="assets/images/logo.png" width="100" alt="logo">
+    </div>
+
+    <!-- Title -->
+    <div class="text-center">
+      <h3 class="fw-bold text-white">Create Account 🚀</h3>
+      <p class="text-light">Sign up to start shopping</p>
+    </div>
+    <hr>
+    <!-- Form -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label class="form-label text-light">Username</label>
+        <input type="text"
+               class="form-control custom-input"
+               placeholder="Enter username"
+               formControlName="UserName">
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label text-light">Email address</label>
+        <input type="email"
+               class="form-control custom-input"
+               placeholder="Enter email"
+               formControlName="email">
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label text-light">Password</label>
+        <input type="password"
+               class="form-control custom-input"
+               placeholder="Enter password"
+               formControlName="password">
+      </div>
+
+      <!-- Button -->
+      <button class="btn login-btn w-100 mb-3" [disabled]="loading">
+        {{ loading ? 'Registering...' : 'Register' }}
+      </button>
+
+    </form>
+
+    <!-- Divider -->
+    <div class="divider">OR</div>
+
+    <!-- Google -->
+    <div class="google-wrapper mb-3">
+      <div id="google-btn"></div>
+    </div>
+
+    <!-- Login Link -->
+    <p class="text-center mb-0 text-light">
+      Already have an account?
+      <a routerLink="/auth/login" class="register-link">Login</a>
+    </p>
+
+  </div>
+
+</div>

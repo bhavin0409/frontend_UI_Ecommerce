@@ -1,0 +1,179 @@
+<div class="container-fluid p-4">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold gradient-text">🛒 Product List</h2>
+
+    <a routerLink="/admin/add-product" class="btn btn-success shadow-sm px-4">
+      ➕ Add Product
+    </a>
+  </div>
+
+  <!-- CARD -->
+  <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+    <div class="table-responsive">
+
+      <table class="table table-hover align-middle text-center mb-0">
+
+        <!-- HEADER -->
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Product</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <!-- BODY -->
+        <tbody>
+          <tr *ngFor="let p of products; let i = index" class="table-row">
+
+            <td>{{ i + 1 }}</td>
+
+            <!-- PRODUCT -->
+            <td class="d-flex align-items-center gap-3 text-start">
+              <img [src]="'https://localhost:7225' + p.imageUrl" class="product-img">
+
+              <div>
+                <div class="fw-semibold">{{ p.name }}</div>
+                <small class="text-muted">ID: {{ p.id }}</small>
+              </div>
+            </td>
+
+            <!-- DESC -->
+            <td class="text-muted small">
+              {{ p.description | slice:0:40 }}...
+            </td>
+
+            <!-- CATEGORY -->
+            <td>
+              <span class="badge bg-info-subtle text-dark px-3 py-2">
+                {{ p.categoryName }}
+              </span>
+            </td>
+
+            <!-- PRICE -->
+            <td class="fw-bold text-success">
+              ₹ {{ p.price }}
+            </td>
+
+            <!-- STOCK -->
+            <td>
+              <span class="badge px-3 py-2" [ngClass]="p.stock > 0 ? 'bg-success' : 'bg-danger'">
+                {{ p.stock > 0 ? p.stock + ' Available' : 'Out' }}
+              </span>
+            </td>
+
+            <!-- ACTIONS -->
+            <td>
+              <div class="d-flex justify-content-center gap-2">
+
+
+                <button class="btn btn-sm btn-primary action-btn" (click)="viewProduct(p)">
+                  👁
+                </button>
+                <a [routerLink]="['/admin/edit-product', p.id]" class="btn btn-sm btn-warning action-btn">
+                  ✏️
+                </a>
+
+                <button class="btn btn-sm btn-danger action-btn" (click)="deleteProduct(p.id)">
+                  🗑
+                </button>
+
+              </div>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+
+</div>
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+    <div class="modal-content border-0 rounded-4 shadow-lg overflow-hidden">
+
+      <!-- HEADER -->
+      <div class="modal-header bg-gradient text-white">
+        <h5 class="fw-bold text-dark">🛍️ Product Details</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- BODY -->
+      <div class="modal-body p-4" *ngIf="selectedProduct">
+
+        <div class="row">
+
+          <!-- LEFT -->
+          <div class="col-md-5 text-center border-end">
+
+            <img [src]="'https://localhost:7225' + selectedProduct.imageUrl"
+              class="img-fluid rounded-4 shadow-sm product-preview">
+
+            <h4 class="fw-bold mt-3">
+              {{ selectedProduct.name }}
+            </h4>
+
+            <span class="badge bg-primary px-3 py-2 mt-2">
+              {{ selectedProduct.categoryName }}
+            </span>
+
+            <h3 class="text-success fw-bold mt-3">
+              ₹ {{selectedProduct.price}}
+            </h3>
+
+          </div>
+
+          <!-- RIGHT -->
+          <div class="col-md-7">
+
+            <h5 class="fw-bold mb-3">📄 Description</h5>
+
+            <div class="desc-box">
+              <p [innerHTML]="formattedDescription"></p>
+            </div>
+
+            <div class="mt-4">
+              <span class="badge px-4 py-2 fs-6" [ngClass]="selectedProduct.stock > 0 ? 'bg-success' : 'bg-danger'">
+                {{ selectedProduct.stock > 0 ? 'In Stock' : 'Out of Stock' }}
+              </span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <div class="modal-footer justify-content-between">
+
+        <button class="btn btn-outline-danger px-4" (click)="deleteProduct(selectedProduct.id)">
+          🗑 Delete
+        </button>
+
+        <div>
+          <a [routerLink]="['/admin/edit-product', selectedProduct.id]" class="btn btn-warning px-4 me-2"
+            data-bs-dismiss="modal">
+            ✏️ Edit
+          </a>
+
+          <button class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

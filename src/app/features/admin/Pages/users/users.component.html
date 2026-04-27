@@ -1,0 +1,83 @@
+<div class="container-fluid px-4 mt-4">
+
+  <!-- HEADER -->
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+
+    <h2 class="fw-bold gradient-text">👥 Users Management</h2>
+
+    <div class="search-box">
+      <input type="text"
+             class="form-control shadow-sm"
+             placeholder="🔍 Search users..."
+             [(ngModel)]="searchText"
+             (input)="onSearch()">
+    </div>
+
+  </div>
+
+  <!-- CARD -->
+  <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+    <div class="table-responsive">
+
+      <table class="table align-middle text-center mb-0">
+
+        <!-- HEADER -->
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+
+        <!-- BODY -->
+        <tbody>
+          <tr *ngFor="let user of filteredUsers; let i = index" class="table-row">
+
+            <!-- INDEX -->
+            <td class="fw-semibold text-muted">
+              {{ i + 1 }}
+            </td>
+
+            <!-- USER -->
+            <td class="text-start">
+              <div class="d-flex justify-content-center gap-3">
+
+                <!-- AVATAR -->
+                <div class="avatar">
+                  {{ user.userName?.charAt(0).toUpperCase() }}
+                </div>
+
+                <div>
+                  <div class="fw-semibold">{{ user.userName }}</div>
+                  <small class="text-muted">User ID</small>
+                </div>
+
+              </div>
+            </td>
+
+            <!-- EMAIL -->
+            <td class="text-muted">
+              {{ user.email }}
+            </td>
+
+            <!-- ROLE -->
+            <td>
+              <span class="badge px-3 py-2 role-badge"
+                [ngClass]="user.role === 'Admin' ? 'admin-role' : 'user-role'">
+                {{ user.role }}
+              </span>
+            </td>
+
+          </tr>
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</div>

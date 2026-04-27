@@ -1,0 +1,61 @@
+.gradient-text {
+  background: linear-gradient(rgba(39, 158, 194, 0.933), #18ac5a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Table Row Hover */
+.table-row {
+  transition: 0.3s;
+}
+.table-row:hover {
+  background: #f8f9ff;
+  transform: scale(1.01);
+}
+
+/* Product Image */
+.product-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.product-img:hover {
+  transform: scale(1.1);
+}
+
+/* Modal Image */
+.product-preview {
+  max-height: 220px;
+  object-fit: contain;
+}
+
+/* Buttons */
+.action-btn {
+  transition: 0.3s;
+}
+.action-btn:hover {
+  transform: scale(1.15);
+}
+
+/* Modal Header Gradient */
+.bg-gradient {
+  background: linear-gradient(45deg, #4e73df, #224abe);
+}
+
+/* Description Box */
+.desc-box {
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar */
+.desc-box::-webkit-scrollbar {
+  width: 6px;
+}
+.desc-box::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}

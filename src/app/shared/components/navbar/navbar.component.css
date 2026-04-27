@@ -1,0 +1,18 @@
+.navbar {
+  transition: all 0.3s ease;
+}
+
+.nav-link.active {
+  font-weight: 600;
+  color: #0d6efd !important;
+}
+
+.btn {
+  min-width: 100px;
+}
+
+@media (max-width: 991px) {
+  .nav-item.my-3 {
+    margin: 0.5rem 0 !important;
+  }
+}
