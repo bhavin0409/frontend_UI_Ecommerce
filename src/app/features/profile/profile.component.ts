@@ -42,7 +42,7 @@ export class ProfileComponent implements OnInit {
     this.authService.getUser(this.email).subscribe({
       next: (res) => {
         this.user = res;
-                
+            console.log(this.user);
         this.editForm.patchValue({
           Id: this.user.id,
           UserName: this.user.userName,

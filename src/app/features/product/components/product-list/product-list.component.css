@@ -1,5 +1,5 @@
-#product-list{
-    background: #0f2027;
+#product-list {
+  background: #0f2027;
 }
 
 
@@ -14,6 +14,7 @@
 .action-btn {
   transition: 0.3s;
 }
+
 .action-btn:hover {
   transform: scale(1.15);
 }
@@ -34,7 +35,25 @@
 .desc-box::-webkit-scrollbar {
   width: 6px;
 }
+
 .desc-box::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+#product-grid {
+  height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+#product-grid::-webkit-scrollbar {
+  width: 5px;
+  background: black;
+}
+
+#product-grid::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 10px;
 }

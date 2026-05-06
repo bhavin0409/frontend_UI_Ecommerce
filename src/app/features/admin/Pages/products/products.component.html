@@ -9,10 +9,87 @@
     </a>
   </div>
 
+<div class="card shadow-sm border-0 p-3 mb-4 filter-bar">
+
+  <div class="row g-3 align-items-end">
+
+    <!-- 🔍 Search -->
+    <div class="col-md-3">
+      <label class="form-label fw-semibold">Search</label>
+      <div class="input-group">
+        <span class="input-group-text bg-white">🔍</span>
+        <input type="text"
+               [(ngModel)]="search"
+               (input)="applyFilter()"
+               class="form-control"
+               placeholder="Search products...">
+      </div>
+    </div>
+
+    <!-- 💰 Price Range -->
+    <div class="col-md-3">
+      <label class="form-label fw-semibold">Price Range</label>
+      <div class="d-flex gap-2">
+        <input type="number"
+               [(ngModel)]="filter.minPrice"
+               (input)="applyFilter()"
+               class="form-control"
+               placeholder="Min">
+
+        <input type="number"
+               [(ngModel)]="filter.maxPrice"
+               (input)="applyFilter()"
+               class="form-control"
+               placeholder="Max">
+      </div>
+    </div>
+
+    <!-- 🏷 Category -->
+    <div class="col-md-2">
+      <label class="form-label fw-semibold">Category</label>
+      <select [(ngModel)]="filter.category"
+              (change)="applyFilter()"
+              class="form-select">
+        <option value="">All</option>
+
+        <option *ngFor="let cat of categories"
+                [value]="cat.name">
+          {{ cat.name }}
+        </option>
+      </select>
+    </div>
+
+    <!-- 🔽 Sort -->
+    <div class="col-md-2">
+      <label class="form-label fw-semibold">Sort By</label>
+      <select [(ngModel)]="filter.sortBy"
+              (change)="applyFilter()"
+              class="form-select">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+      </select>
+    </div>
+
+    <!-- 🔼🔽 Order -->
+    <div class="col-md-2">
+      <label class="form-label fw-semibold">Order</label>
+      <select [(ngModel)]="filter.sortOrder"
+              (change)="applyFilter()"
+              class="form-select">
+        <option value="asc">⬆ Asc</option>
+        <option value="desc">⬇ Desc</option>
+      </select>
+    </div>
+
+<!--     
+      <button class="btn btn-outline-secondary w-100"
+            (click)="resetFilters()">Reset</button> -->
+  </div>
+</div>
   <!-- CARD -->
   <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
 
-    <div class="table-responsive">
+    <div class="table-responsive table-scroll">
 
       <table class="table table-hover align-middle text-center mb-0">
 
@@ -30,7 +107,7 @@
         </thead>
 
         <!-- BODY -->
-        <tbody>
+        <tbody class="table-body">
           <tr *ngFor="let p of products; let i = index" class="table-row">
 
             <td>{{ i + 1 }}</td>

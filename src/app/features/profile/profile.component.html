@@ -2,27 +2,18 @@
     <div class="row g-5 justify-content-center">
 
         <div class="col-lg-4 text-center">
-            <ng-container *ngIf="user?.profileImage; else defaultImage">
-                <img [src]=user.profileImage class="rounded-circle border border-3 border-primary mb-3" width="120">
-            </ng-container>
+            <img [src]="user.profileImage ? user.profileImage : 'https://cdn-icons-png.flaticon.com/512/847/847969.png'"
+                class="rounded-circle border border-3 border-primary mb-3" width="120" />
 
-            <ng-template #defaultImage>
-                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png"
-                    class="rounded-circle border border-3 border-primary mb-3" width="120">
-            </ng-template>
             <h3>{{user.userName}}</h3>
             <p class="text-light">{{user.email}}</p>
         </div>
 
         <div class="col-lg-6">
             <div class="row text-center mb-4" *ngIf="!isAdmin()">
-                <!-- <div class="col-6">
-                    <h5 id="ordersCount">0</h5>
-                    <small class="text-muted">Orders</small>
-                </div> -->
                 <div class="col-6">
                     <h5 id="cartCount"></h5>
-                    <h5 routerLink="/cart" class="text-muted">Cart</h5>
+                    <h5 routerLink="/cart" class="text-white">Cart</h5>
                 </div>
             </div>
 

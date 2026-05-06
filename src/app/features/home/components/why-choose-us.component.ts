@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
         <div class="col-md-4" *ngFor="let item of features">
           <div class="card feature-card text-center p-4">
 
-            <div class="icon mb-3">{{ item.icon }}</div>
+            <div class="icon mb-3 text-success">{{ item.icon }}</div>
 
             <h5 class="fw-bold text-white">{{ item.title }}</h5>
 
@@ -86,7 +86,7 @@ export class WhyChooseUsComponent {
         {
             icon: '✔',
             title: 'Quality Products',
-            description: 'We ensure every product meets high quality and durability standards.'
+            description: 'We ensure every product meets high quality standards.'
         },
         {
             icon: '🚚',

@@ -1,13 +1,10 @@
 #profile-box{
     background: #0f2027;
     color: white;
-    height: 87.3%;
 }
 
 .box{
-    height: 70%;
-    padding: 15px;
-    overflow-y: auto;
+    margin: 25px;  
     overflow-x: hidden;
 }
 .box::-webkit-scrollbar {

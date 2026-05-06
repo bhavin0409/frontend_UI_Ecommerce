@@ -14,11 +14,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
-  products: Product[] = [];
+
+  allProducts: Product[] = [];   // 🔥 original
+  products: Product[] = [];      // 🔥 filtered
+
   search: string = '';
   page: number = 1;
   loading: boolean = false;
+
   selectedProduct = signal<any>({});
+
   private snackBar = inject(MatSnackBar);
 
   constructor(
@@ -26,23 +31,86 @@ export class ProductListComponent implements OnInit {
     private cartservice: CartService
   ) { }
 
+  // ✅ Categories
+  categories = [
+    { id: 1, name: 'Electronics' },
+    { id: 2, name: 'Clothing' },
+    { id: 3, name: 'Books' },
+    { id: 4, name: 'Home Appliances' },
+    { id: 5, name: 'Sports' }
+  ];
+
+  // ✅ Filter object
+  filter = {
+    minPrice: -Infinity,
+    maxPrice: Infinity,
+    category: '',
+    sortBy: 'name',
+    sortOrder: 'asc'
+  };
+
   ngOnInit() {
     this.loadProducts();
   }
 
+  // ✅ Load data
   loadProducts() {
     this.loading = true;
 
-    this.productService.getProducts(this.search, this.page)
+    this.productService.getProducts('', this.page)
       .subscribe({
         next: res => {
-          this.products = res.data;
+          this.allProducts = res.data;
+          this.applyFilter(); // 🔥 apply filtering
           this.loading = false;
         },
         error: () => this.loading = false
       });
   }
 
+  // ✅ FILTER + SORT
+  applyFilter() {
+    let data = [...this.allProducts];
+
+    // 🔍 Search
+    if (this.search) {
+      data = data.filter(p =>
+        p.name.toLowerCase().includes(this.search.toLowerCase())
+      );
+    }
+
+    // 💰 Price
+    data = data.filter(p =>
+      p.price >= this.filter.minPrice &&
+      p.price <= this.filter.maxPrice
+    );
+
+    // 🏷 Category
+    if (this.filter.category) {
+      data = data.filter(p =>
+        p.categoryName?.toLowerCase() === this.filter.category.toLowerCase()
+      );
+    }
+
+    // 🔽 Sorting
+    data.sort((a: any, b: any) => {
+      let valA = a[this.filter.sortBy];
+      let valB = b[this.filter.sortBy];
+
+      if (typeof valA === 'string') {
+        valA = valA.toLowerCase();
+        valB = valB.toLowerCase();
+      }
+
+      return this.filter.sortOrder === 'asc'
+        ? valA > valB ? 1 : -1
+        : valA < valB ? 1 : -1;
+    });
+
+    this.products = data;
+  }
+
+  // ✅ View Product
   viewProduct(id: number) {
     this.productService.getProductById(id).subscribe((res: any) => {
       this.selectedProduct.set(res.data);
@@ -53,7 +121,8 @@ export class ProductListComponent implements OnInit {
       modal.show();
     });
   }
-  
+
+  // ✅ Description
   get formattedDescription() {
     const product = this.selectedProduct();
 
@@ -65,11 +134,7 @@ export class ProductListComponent implements OnInit {
       .replace(/🎯/g, '<br><br>🎯');
   }
 
-  onSearch() {
-    this.page = 1;
-    this.loadProducts();
-  }
-
+  // ✅ Pagination (reapply filter)
   nextPage() {
     this.page++;
     this.loadProducts();
@@ -81,18 +146,34 @@ export class ProductListComponent implements OnInit {
       this.loadProducts();
     }
   }
+
+  // ✅ Add to cart
   addToCart(id: number) {
     this.cartservice.addToCart(id, 1).subscribe({
       next: () => {
-        this.snackBar.open('Product is added to cart', 'Close', {
+        this.snackBar.open('Product added to cart ✅', 'Close', {
           duration: 3000,
           panelClass: ['bg-success', 'text-white']
         });
       },
       error: () => {
-        this.loading = false;
+        this.snackBar.open('Failed ❌', 'Close', {
+          duration: 3000
+        });
       }
     });
   }
 
+  // ✅ Reset filters
+  resetFilters() {
+    this.search = '';
+    this.filter = {
+      minPrice: -Infinity,
+      maxPrice: Infinity,
+      category: '',
+      sortBy: 'name',
+      sortOrder: 'asc'
+    };
+    this.applyFilter();
+  }
 }

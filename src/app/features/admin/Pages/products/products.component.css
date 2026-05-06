@@ -3,8 +3,25 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.table-scroll {
+  max-height: 574px;   
+  overflow-y: auto;
+}
 
-/* Table Row Hover */
+.sticky-header th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.table-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
 .table-row {
   transition: 0.3s;
 }
@@ -58,4 +75,47 @@
 .desc-box::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 10px;
+}
+
+/* 🔥 Filter Card Styling */
+.filter-bar {
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+}
+
+/* Inputs */
+.filter-bar .form-control,
+.filter-bar .form-select {
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Focus Effect */
+.filter-bar .form-control:focus,
+.filter-bar .form-select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.25);
+}
+
+/* Input group icon */
+.input-group-text {
+  border-radius: 10px 0 0 10px;
+}
+
+/* Hover effect */
+.filter-bar:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Labels */
+.form-label {
+  font-size: 13px;
+  color: #555;
+}
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .filter-bar {
+    padding: 15px;
+  }
 }
