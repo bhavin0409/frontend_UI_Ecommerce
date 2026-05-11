@@ -1,4 +1,5 @@
 #box{
+    background-color: #0f2027;
     height: 100%;
     overflow: auto;
 }

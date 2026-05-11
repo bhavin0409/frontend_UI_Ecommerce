@@ -17,7 +17,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 </div>`,
   styles: `
   #box{
-    height: 87.3vh;
+    background-color: #0f2027;
+    height: 86vh;
     overflow: auto;
   }
   #box::-webkit-scrollbar {
